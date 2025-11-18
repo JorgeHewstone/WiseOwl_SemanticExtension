@@ -2,8 +2,8 @@
 
 Un resaltador de texto "inteligente" para Chrome. Esta extensión te permite buscar en una base de datos de 100+ tópicos y resalta todo el texto semánticamente relacionado en la página que estás leyendo.
 
-![]
-*(¡Reemplaza esto con una captura de pantalla de tu extensión funcionando!)*
+![WiseOwl_demo.png]
+
 
 ---
 

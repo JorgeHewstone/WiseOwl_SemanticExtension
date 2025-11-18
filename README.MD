@@ -1,4 +1,5 @@
-# Semantic Highlighter Chrome Extension
+# WiseOwl
+### Semantic Highlighter Chrome Extension
 <p align="center">
 <img src="WiseOwl.png" alt="WiseOwl Semantic Extension Demo" width="120">
 </p>

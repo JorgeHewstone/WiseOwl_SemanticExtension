@@ -1,0 +1,9 @@
+/*
+ Defines the style for the highlighted text.
+ This class is added and removed by content.js.
+*/
+.semantic-highlight {
+  background-color: yellow;
+  color: black;
+  font-weight: bold;
+}

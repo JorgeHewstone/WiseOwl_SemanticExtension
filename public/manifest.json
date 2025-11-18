@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "WiseOwl",
+  "version": "1.0.0",
+  "description": "Highlights relevant text using keywords.",
+
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon-16.png",
+      "48": "icon-48.png",
+      "128": "icon-128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.bundle.js"]
+    }
+  ],
+  "icons": {
+    "16": "icon-16.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  },
+  
+  "web_accessible_resources": [
+    {
+      "resources": [ 
+        "models/*",
+        "data/*"  
+      ],
+      "matches": [ "<all_urls>" ]
+    }
+  ]
+}

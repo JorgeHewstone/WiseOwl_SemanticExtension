@@ -1,8 +1,9 @@
 # Semantic Highlighter Chrome Extension
-![WiseOwl Extension](WiseOwl.png)
+
+<img src="WiseOwl.png" alt="WiseOwl Semantic Extension Demo" width="100">
 A "smart" text highlighter for Chrome. This extension allows you to search a database of 100+ topics and highlights all semantically related text on the page you're reading.
 
-![WiseOwl Semantic Extension Demo](WiseOwl_demo.png)
+<img src="WiseOwl_demo.png" alt="WiseOwl Semantic Extension Demo" width="500">
 
 ---
 

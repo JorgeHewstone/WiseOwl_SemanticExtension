@@ -1,69 +1,68 @@
 # Semantic Highlighter Chrome Extension
-
-Un resaltador de texto "inteligente" para Chrome. Esta extensión te permite buscar en una base de datos de 100+ tópicos y resalta todo el texto semánticamente relacionado en la página que estás leyendo.
+![WiseOwl Extension](WiseOwl.png)
+A "smart" text highlighter for Chrome. This extension allows you to search a database of 100+ topics and highlights all semantically related text on the page you're reading.
 
 ![WiseOwl Semantic Extension Demo](WiseOwl_demo.png)
 
+---
+
+## 🚀 Features
+
+* **Fast Search:** Instantly find topics using [Fuse.js](https://fusejs.io/) for a "fuzzy" search-as-you-type experience.
+* **Intelligent Database:** Includes 100+ pre-calculated topics, each with an expanded list of semantically related keywords.
+* **100% Private & Fast:** All processing happens locally in your browser. Your browsing data never leaves your machine.
+* **Easy Cleanup:** A single click removes all highlights from the page.
 
 ---
 
-## 🚀 Características
+## 🛠️ How It Works (Architecture)
 
-* **Búsqueda Rápida:** Encuentra tópicos al instante usando [Fuse.js](https://fusejs.io/) para una búsqueda "fuzzy" (difusa) mientras escribes.
-* **Base de Datos Inteligente:** Incluye más de 100 tópicos pre-calculados, cada uno con una lista expandida de palabras clave semánticamente relacionadas.
-* **100% Privado y Rápido:** Todo el procesamiento se realiza localmente en tu navegador. Tus datos de navegación nunca salen de tu máquina.
-* **Limpieza Fácil:** Un solo clic para eliminar todos los resaltados de la página.
+This project uses a **hybrid approach** to balance intelligence and performance, avoiding the need to load heavy AI models in the browser.
 
----
+1.  **At Build Time (Offline):**
+    * A Python script (`generate_topics.py`) uses `nltk (WordNet)` to generate a corpus of thousands of keywords.
+    * It then uses `sentence-transformers` to compare the 100+ "base topics" against the corpus.
+    * It generates the extension's "brain": a massive `topics.json` file that maps each topic to its list of semantically similar keywords.
 
-## 🛠️ Cómo Funciona (Arquitectura)
-
-Este proyecto utiliza un enfoque **híbrido** para balancear inteligencia y rendimiento, evitando cargar modelos de IA pesados en el navegador.
-
-1.  **En Tiempo de Build (Offline):**
-    * Un script de Python (`generate_topics.py`) usa `nltk (WordNet)` para generar un corpus de miles de palabras clave.
-    * Usa `sentence-transformers` para comparar los 100+ "tópicos base" contra el corpus.
-    * Genera el "cerebro" de la extensión: un archivo `topics.json` masivo que mapea cada tópico a su lista de palabras clave semánticamente similares.
-
-2.  **En Tiempo de Ejecución (En la Extensión):**
-    * **Popup (`popup.js`):** Carga solo los *nombres* de los tópicos desde `topics.json` y usa `Fuse.js` para potenciar la barra de búsqueda.
-    * **Content Script (`content.js`):** Cuando el usuario selecciona un tópico, el script carga el `topics.json` completo (una sola vez, con caché), busca la lista de palabras clave para ese tópico y recorre el DOM de la página para resaltar las coincidencias.
+2.  **At Runtime (In the Extension):**
+    * **Popup (`popup.js`):** Loads only the topic *names* from `topics.json` and uses `Fuse.js` to power the search bar.
+    * **Content Script (`content.js`):** When the user selects a topic, the script loads the full `topics.json` (once, with caching), finds the keyword list for that topic, and traverses the page's DOM to highlight any matches.
 
 ---
 
-## 💻 Instalación (para Desarrollo)
+## 💻 Installation (for Development)
 
-Para clonar y ejecutar este proyecto localmente:
+To clone and run this project locally:
 
-1.  **Clona el repositorio:**
+1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/tu-usuario/chrome-nlp-highlighter.git](https://github.com/tu-usuario/chrome-nlp-highlighter.git)
+    git clone [https://github.com/your-username/chrome-nlp-highlighter.git](https://github.com/your-username/chrome-nlp-highlighter.git)
     cd chrome-nlp-highlighter
     ```
 
-2.  **Instala las dependencias:**
+2.  **Install dependencies:**
     ```bash
     npm install
     ```
 
-3.  **Construye la extensión:**
-    * Para una compilación de producción (minificada):
+3.  **Build the extension:**
+    * For a production build (minified):
         ```bash
         npm run build
         ```
-    * Para modo de desarrollo (se reconstruye automáticamente al guardar cambios):
+    * For development mode (auto-rebuilds on file changes):
         ```bash
         npm run dev
         ```
 
-4.  **Carga la extensión en Chrome:**
-    * Abre Chrome y ve a `chrome://extensions`.
-    * Activa el **"Developer mode" (Modo desarrollador)** en la esquina superior derecha.
-    * Haz clic en **"Load unpacked" (Cargar descomprimida)**.
-    * Selecciona la carpeta `dist` que se generó en tu proyecto.
+4.  **Load the extension in Chrome:**
+    * Open Chrome and go to `chrome://extensions`.
+    * Enable **"Developer mode"** in the top-right corner.
+    * Click **"Load unpacked"**.
+    * Select the `dist` folder that was generated in your project.
 
 ---
 
-## 📜 Licencia
+## 📜 License
 
-Este proyecto está bajo la licencia MIT. Ver el archivo `LICENSE` para más detalles.
+This project is under the MIT License. See the `LICENSE` file for more details.

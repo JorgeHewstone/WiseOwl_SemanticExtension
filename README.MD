@@ -6,7 +6,7 @@
 A "smart" text highlighter for Chrome. This extension allows you to search a database of 100+ topics and highlights all semantically related text on the page you're reading.
 
 <p align="center">
-<img src="WiseOwl_demo.png" alt="WiseOwl Semantic Extension Demo" width="700">
+<img src="WiseOwl_demo.png" alt="WiseOwl Semantic Extension Demo" width="850">
 </p>
 ---
 
